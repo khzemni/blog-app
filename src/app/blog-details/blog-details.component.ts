@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '../_fakedata/blog';
-import { BlogsService } from '../blogs.service';
-
+import { BlogSericeService } from '../_services/blog-serice.service';
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
@@ -13,19 +12,16 @@ export class BlogDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private blogService: BlogsService
+    private blogService: BlogSericeService
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const blogId = Number(routeParams.get('blogId'));
+    const blogId = String(routeParams.get('blogId'));
     this.getBlog(blogId);
-    // this.product = products.find(
-    //   (product) => product.id === productIdFromRoute
-    // );
   }
 
-  getBlog(id: number): void {
+  getBlog(id: string): void {
     this.blogService.getBlogById(id).subscribe({
       next: (blog) => (this.blog = blog),
       error(err) {

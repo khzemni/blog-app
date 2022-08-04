@@ -13,9 +13,9 @@ export class BlogsService {
   constructor(private http: HttpClient) {}
   API_URL = `${environment.apiUrl}/blogs`;
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  // };
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   getBlogs(): Observable<Blog[]> {
     const blogs = of(BLOGS);

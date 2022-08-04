@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../_fakedata/blog';
-import { BlogsService } from '../blogs.service';
+import { BlogSericeService } from '../_services/blog-serice.service';
 import { BLOGS } from '../_fakedata/mock-blogs';
 import { BlogsFilterPipe } from '../_pipes/blogs-filter.pipe';
 
@@ -12,14 +12,17 @@ import { BlogsFilterPipe } from '../_pipes/blogs-filter.pipe';
 export class BlogsListComponent implements OnInit {
   blogs: Blog[] = [];
   searchText = '';
-  constructor(private blogsService: BlogsService) {}
+  constructor(private blogService: BlogSericeService) {}
   ngOnInit(): void {
     this.getAllBlogs();
   }
 
   getAllBlogs(): void {
-    this.blogsService.getBlogs().subscribe({
-      next: (blogs) => (this.blogs = blogs),
+    this.blogService.getBlogs().subscribe({
+      next: (blogs) => {
+        this.blogs = blogs;
+        console.log(blogs);
+      },
       error: (err) => console.error(err),
       complete: () => console.log('done'),
     });
