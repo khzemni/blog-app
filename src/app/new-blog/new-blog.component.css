@@ -1,0 +1,42 @@
+.new-blog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 20px auto;
+}
+
+label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 10px;
+}
+
+input:not([type="submit"]),
+textarea {
+  width: 80%;
+  border: 2px solid aquamarine;
+  border-radius: 5px;
+  padding: 1.3rem;
+  outline: none;
+  font-size: 1.3rem;
+  margin: 20px auto;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 20ch;
+  font-family: inherit;
+}
+
+input[type="submit"] {
+  width: fit-content;
+  padding: 1.3rem;
+  margin: auto;
+}

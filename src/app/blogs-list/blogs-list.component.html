@@ -1,0 +1,46 @@
+<div class="header">
+  <input
+    class="search"
+    type="text"
+    [(ngModel)]="searchText"
+    placeholder="Search for blogs"
+  />
+  <button class="main-action" routerLink="/new-blog">add new blog</button>
+</div>
+
+<div *ngIf="blogs" class="blogs-container">
+  <div
+    *ngFor="let blog of blogs | blogsFilter: searchText:'blog.title'"
+    target="_blank"
+    rel="noopener"
+    routerLink="/blogs/{{ blog.id }}"
+    class="blog-card"
+    [class.red]="blog.upvotes < blog.downvotes"
+  >
+    <div class="card-header">
+      <div class="blog-title">
+        <h2>{{ blog.title }}</h2>
+      </div>
+      <div class="blog-info">
+        <span
+          ><em
+            >published by <q>{{ blog.author }}</q></em
+          ></span
+        >
+        <div class="blog-rating">
+          <span class="upvotes">{{ blog.upvotes }}</span>
+          <span class="downvotes">{{ blog.downvotes }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="blog-preview">
+      {{ blog.content }}
+    </div>
+    <div class="card-footer">
+      <a routerLink="/blogs/{{ blog.id }}" class="read-more-link">read more</a>
+      <div class="read-more-mask"></div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<div class="blog-details-wrapper">
+  <div *ngIf="blog" class="blog-details">
+    <div class="blog-title">
+      <span>{{ blog.title }}</span>
+    </div>
+    <div class="blog-infos">
+      <div class="publishing-info">
+        <span
+          ><em
+            >By <q>{{ blog.author }}</q></em
+          ></span
+        >
+      </div>
+      <div class="ratings-info">
+        <span class="upvotes">{{ blog.upvotes }}</span>
+        <span class="downvotes">{{ blog.downvotes }}</span>
+      </div>
+    </div>
+    <div class="blog-content">
+      {{ blog.content }}
+    </div>
+    <div class="actions">
+      <button class="action-btn upvotes" (click)="upvote()">upvote</button>
+      <button class="action-btn downvotes" (click)="downvote()">
+        downvote
+      </button>
+    </div>
+  </div>
+</div>

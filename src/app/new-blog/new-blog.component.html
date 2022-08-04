@@ -1,0 +1,22 @@
+<div class="new-blog-container">
+  <h1>new blog</h1>
+  <form
+    class="form blog-form"
+    [formGroup]="newBlogForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <label for="title">Blog title : </label>
+    <input type="text" name="title" id="title" formControlName="title" />
+    <label for="title">Blog Author : </label>
+    <input type="text" name="author" id="author" formControlName="author" />
+    <label for="content">blog content : </label>
+    <textarea
+      type="textarea"
+      name="content"
+      id="content"
+      formControlName="content"
+    ></textarea>
+
+    <input class="main-action" type="submit" value="save blog" />
+  </form>
+</div>
